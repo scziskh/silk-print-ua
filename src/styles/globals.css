@@ -1,0 +1,94 @@
+:root {
+  --mainColor: #1f2129;
+  --secondaryColor: #d4af37;
+  --contrastColor: white;
+  --lightColor: #b6bfc0;
+  --mainGrad: linear-gradient(60deg, #313131 0%, #313739 100%);
+  --secondaryGrad: linear-gradient(60deg, #d4af37 0%, #bf9b30 100%);
+  --contrastGrad: linear-gradient(60deg, rgba(252, 252, 255, 1) 0%, rgba(240, 240, 242, 1) 100%);
+  --transitionDuration: 0.25s;
+  --darkShadow: 1px 0px 6px rgba(0, 0, 0, 0.3);
+  --lightShadow: 1px 0px 6px rgba(255, 255, 255, 0.5);
+  --radius: 10px;
+  --gap: 32px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+*::selection {
+  background-color: var(--secondaryColor);
+  color: var(--contrastColor);
+}
+html,
+body {
+  color: var(--mainColor);
+  font-size: 1.05em;
+  padding: 0;
+  margin: 0;
+  font-family: 'Mulish', sans-serif;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2.2em;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+section {
+  padding: 20px 0;
+}
+
+.link {
+  color: black;
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.field {
+  font-size: 1em;
+  font-family: 'Mulish', sans-serif;
+  width: 100%;
+  display: block;
+  margin: 15px 0;
+  padding: 12px;
+  border: none;
+  outline: 1px solid var(--lightColor);
+  background-color: inherit;
+  border-radius: var(--borderRadius);
+  transition-duration: var(--transitionDuration);
+}
+
+.field:hover {
+  outline: 1px solid var(--mainColor);
+}
+
+.field:focus {
+  outline: 1px solid var(--secondaryColor);
+}

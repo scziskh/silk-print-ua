@@ -1,4 +1,10 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+ 
+const withNextIntl = createNextIntlPlugin();
+ 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default nextConfig;
+const nextConfig = {
+    trailingSlash: true,    
+};
+ 
+export default withNextIntl(nextConfig);
