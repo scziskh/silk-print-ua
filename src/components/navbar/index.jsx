@@ -10,20 +10,20 @@ import Logo from './logo';
 
 const Navbar = () => {
   return (
-    <Wrapper>
+    <StyledNavbar>
       <Container>
-        <Grid>
+        <StyledGrid>
           <Logo />
           <NavbarMenu />
-        </Grid>
+        </StyledGrid>
       </Container>
-    </Wrapper>
+    </StyledNavbar>
   );
 };
 
 export default Navbar;
 
-const Wrapper = styled.header`
+const StyledNavbar = styled.header`
   width: 100%;
   height: 80px;
   background: var(--mainGrad);
@@ -31,9 +31,9 @@ const Wrapper = styled.header`
   z-index: 99;
 `;
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+const StyledGrid = styled.div`
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 100%;
 `;

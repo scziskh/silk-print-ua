@@ -10,7 +10,7 @@ import Container from '@/layouts/container';
 
 /* Configs */
 import { translationsConfig } from '@/configs/translations.config';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const ServiceAboutSection = () => {
   const t = useTranslations('ServicesAboutSection');
@@ -30,6 +30,9 @@ const ServiceAboutSection = () => {
       image: useRef(null),
     },
   };
+
+  const defaultWidth = 750;
+  const defaultHeight = 562;
 
   /* Resize sections */
   useEffect(() => {
@@ -54,58 +57,58 @@ const ServiceAboutSection = () => {
 
   return (
     <>
-      <Wrapper>
+      <StyledSectionWrapper>
         <Container>
-          <Column>{t.rich('pantone-printing', translationsConfig)}</Column>
-          <Column>{t.rich('metalic-printing', translationsConfig)}</Column>
+          <StyledColumn>{t.rich('pantone-printing', translationsConfig)}</StyledColumn>
+          <StyledColumn>{t.rich('metalic-printing', translationsConfig)}</StyledColumn>
         </Container>
-      </Wrapper>
-      <Wrapper>
+      </StyledSectionWrapper>
+      <StyledSectionWrapper>
         <Container>
-          <Column ref={sectionRefs.stamping.text} id="stamping-section_text">
+          <StyledColumn ref={sectionRefs.stamping.text} id="stamping-section_text">
             {t.rich('stamping', translationsConfig)}
-          </Column>
-          <ImageWrapper ref={sectionRefs.stamping.image} id="stamping-section_image">
-            <Image src="/assets/works/IMG_4636.webp" width={750} height={562} alt="Stamping Section Image" />
-          </ImageWrapper>
+          </StyledColumn>
+          <StyledImageWrapper ref={sectionRefs.stamping.image} id="stamping-section_image">
+            <Image src="/assets/works/IMG_4636.webp" width={defaultWidth} height={defaultHeight} alt="Stamping Section Image" />
+          </StyledImageWrapper>
         </Container>
-      </Wrapper>
-      <Wrapper>
+      </StyledSectionWrapper>
+      <StyledSectionWrapper>
         <Container>
-          <Column>{t.rich('die-cutting', translationsConfig)}</Column>
-          <Column>{t.rich('kashi', translationsConfig)}</Column>
+          <StyledColumn>{t.rich('die-cutting', translationsConfig)}</StyledColumn>
+          <StyledColumn>{t.rich('kashi', translationsConfig)}</StyledColumn>
         </Container>
-      </Wrapper>
-      <Wrapper>
+      </StyledSectionWrapper>
+      <StyledSectionWrapper>
         <Container>
-          <ImageWrapper ref={sectionRefs.foilStamping.image}>
-            <Image src="/assets/works/IMG_4905.webp" width={750} height={562} alt="Foil Stamping Image" />
-          </ImageWrapper>
-          <Column ref={sectionRefs.foilStamping.text}>{t.rich('foil-stamping', translationsConfig)}</Column>
+          <StyledImageWrapper ref={sectionRefs.foilStamping.image}>
+            <Image src="/assets/works/IMG_4905.webp" width={defaultWidth} height={defaultHeight} alt="Foil Stamping Image" />
+          </StyledImageWrapper>
+          <StyledColumn ref={sectionRefs.foilStamping.text}>{t.rich('foil-stamping', translationsConfig)}</StyledColumn>
         </Container>
-      </Wrapper>
-      <Wrapper>
+      </StyledSectionWrapper>
+      <StyledSectionWrapper>
         <Container>
-          <Column>{t.rich('varnish-printing', translationsConfig)}</Column>
-          <Column>{t.rich('thermography', translationsConfig)}</Column>
+          <StyledColumn>{t.rich('varnish-printing', translationsConfig)}</StyledColumn>
+          <StyledColumn>{t.rich('thermography', translationsConfig)}</StyledColumn>
         </Container>
-      </Wrapper>
-      <Wrapper>
+      </StyledSectionWrapper>
+      <StyledSectionWrapper>
         <Container>
-          <Column ref={sectionRefs.whitePrinting.text}>{t.rich('white-printing', translationsConfig)}</Column>
+          <StyledColumn ref={sectionRefs.whitePrinting.text}>{t.rich('white-printing', translationsConfig)}</StyledColumn>
 
-          <ImageWrapper ref={sectionRefs.whitePrinting.image}>
-            <Image src="/assets/works/IMG_4710.webp" width={750} height={562} alt="White Printing Image" />
-          </ImageWrapper>
+          <StyledImageWrapper ref={sectionRefs.whitePrinting.image}>
+            <Image src="/assets/works/IMG_4710.webp" width={defaultWidth} height={defaultHeight} alt="White Printing Image" />
+          </StyledImageWrapper>
         </Container>
-      </Wrapper>
+      </StyledSectionWrapper>
     </>
   );
 };
 
 export default ServiceAboutSection;
 
-const Wrapper = styled.section`
+const StyledSectionWrapper = styled.section`
   &:nth-child(2n + 1) {
     background: var(--contrastGrad);
     box-shadow: var(--darkShadow);
@@ -124,22 +127,18 @@ const Wrapper = styled.section`
   }
 `;
 
-const Column = styled.div`
+const StyledColumn = styled.div`
   height: fit-content;
 `;
 
-const ImageWrapper = styled.div`
+const StyledImageWrapper = styled.div`
   width: 100%;
-  background: var(--contrastGrad);
   overflow: hidden;
   display: flex;
-  height: 360px;
   img {
-    object-fit: cover;
     min-width: 100%;
     min-height: 100%;
-    width: 100%;
-    height: auto;
+    object-fit: cover;
     align-self: center;
   }
 `;

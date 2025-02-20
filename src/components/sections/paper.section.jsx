@@ -15,27 +15,28 @@ const PaperSection = () => {
   const tButtons = useTranslations('Buttons');
 
   return (
-    <Wrapper>
-      <Background />
+    <StyledPaperSection>
+      <StyledBackground />
       <Container>
         <h2>{t('header')}</h2>
-        <Text>{t.rich('html', translationsConfig)}</Text>
+        <StyledTextContent>{t.rich('html', translationsConfig)}</StyledTextContent>
         <ButtonLink href="paper" label={tButtons('details')} />
       </Container>
-    </Wrapper>
+    </StyledPaperSection>
   );
 };
 
 export default PaperSection;
 
-const Wrapper = styled.section`
+const StyledPaperSection = styled.section`
   position: relative;
   background: var(--contrastGrad);
   box-shadow: var(--darkShadow);
   padding: var(--gap) 0;
+  overflow: hidden;
 `;
 
-const Background = styled.div`
+const StyledBackground = styled.div`
   position: absolute;
   top: 0;
   right: 0;
@@ -46,7 +47,7 @@ const Background = styled.div`
   background-position: top center;
 `;
 
-const Text = styled.div`
+const StyledTextContent = styled.div`
   width: 50%;
   @media screen and (max-width: 1366px) {
     width: 60%;
@@ -55,6 +56,9 @@ const Text = styled.div`
     width: 70%;
   }
   @media screen and (max-width: 640px) {
-    width: 80%;
+    width: 90%;
+  }
+  @media screen and (max-width: 480px) {
+    width: 100%;
   }
 `;

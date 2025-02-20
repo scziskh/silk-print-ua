@@ -14,26 +14,27 @@ import DarkImage from '@/layouts/dark-image';
 const MainScreenSection = () => {
   const t = useTranslations('MainSection');
   return (
-    <Wrapper>
+    <StyledMainScreenSection>
       <DarkImage>
-        <video loop autoPlay muted playsInline preload="none">
+        <StyledVideo loop autoPlay muted playsInline preload="none" aria-hidden="true">
           <source src="/assets/bg-video.mp4" type="video/mp4" />
-        </video>
+          Your browser does not support the video tag.
+        </StyledVideo>
       </DarkImage>
       <Container>
-        <Text>
+        <StyledTextContent>
           <h1>{t('header')}</h1>
           <p>{t('paragraph_1')}</p>
           <p>{t('paragraph_2')}</p>
           <ButtonLink href="services" label={t('link')} />
-        </Text>
+        </StyledTextContent>
       </Container>
-    </Wrapper>
+    </StyledMainScreenSection>
   );
 };
 export default MainScreenSection;
 
-const Wrapper = styled.section`
+const StyledMainScreenSection = styled.section`
   position: relative;
   height: calc(100vh - 80px);
   min-height: 480px;
@@ -41,14 +42,21 @@ const Wrapper = styled.section`
   overflow: hidden;
   color: #fff;
   text-shadow: var(--darkShadow);
-  video {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
+`;
+
+const StyledVideo = styled.video`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const StyledTextContent = styled.div`
+  position: relative;
+  top: 30vh;
+  z-index: 1;
   p {
     margin: 3px 0;
     font-size: 1.1em;
@@ -57,11 +65,4 @@ const Wrapper = styled.section`
     color: var(--contrastColor);
     box-shadow: var(--darkShadow);
   }
-`;
-
-const Text = styled.div`
-  height: calc(100vh - 80px);
-  min-height: 480px;
-  position: absolute;
-  top: 30vh;
 `;

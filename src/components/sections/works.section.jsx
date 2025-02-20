@@ -14,19 +14,19 @@ import { useTranslations } from 'next-intl';
 const WorksSection = () => {
   const t = useTranslations('WorksSection');
   return (
-    <Wrapper>
+    <StyledWorksSection>
       <Container>
         <h2>{t('header')}</h2>
         <WorksGallery />
-        <ButtonLink label={t('link')} href="works" />
+        <ButtonLink href="works" label={t('link')} />
       </Container>
-    </Wrapper>
+    </StyledWorksSection>
   );
 };
 
 export default WorksSection;
 
-const Wrapper = styled.section`
+const StyledWorksSection = styled.section`
   width: 100%;
   padding: var(--gap) 0;
   h2 {

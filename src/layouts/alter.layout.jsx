@@ -9,7 +9,7 @@ const AlterLayout = ({ children }) => {
 export default AlterLayout;
 
 const Wrapper = styled.div`
-  section:nth-child(even) {
+  & > section:nth-child(even) {
     background: linear-gradient(60deg, rgba(240, 242, 245, 1) 0%, rgba(230, 230, 232, 1) 100%);
   }
 `;

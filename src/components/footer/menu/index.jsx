@@ -12,19 +12,15 @@ const FooterMenu = () => {
   const tFooterMenu = useTranslations('FooterMenu');
 
   /*Lists*/
-  const menuList = [
-    { href: 'layout-requirements', label: tFooterMenu('layout-requirements') },
-    { href: 'payment-and-delivery', label: tFooterMenu('payment-and-delivery') },
-    { href: 'terms', label: tFooterMenu('terms') },
-    { href: 'privacy-policy', label: tFooterMenu('privacy-policy') },
-    { href: 'faq', label: tFooterMenu('faq') },
-  ];
+  const menuList = ['layout-requirements', 'payment-and-delivery', 'terms', 'privacy-policy', 'faq'];
 
   return (
     <Wrapper>
       <ul>
-        {menuList.map((props, key) => (
-          <MenuLink key={key} {...props} />
+        {menuList.map((key) => (
+          <MenuItem key={key}>
+            <MenuLink href={key} label={tFooterMenu(key)} />
+          </MenuItem>
         ))}
       </ul>
     </Wrapper>
@@ -47,14 +43,13 @@ const Wrapper = styled.nav`
     justify-content: space-between;
     padding: 0;
     @media screen and (max-width: 1280px) {
-      display: block;
+      flex-direction: column;
       transition-duration: var(--transitionDuration);
-      li {
-        justify-content: center;
-        display: flex;
-        text-align: center;
-        padding: 8px 0;
-      }
     }
   }
+`;
+
+const MenuItem = styled.li`
+  justify-content: center;
+  display: flex;
 `;

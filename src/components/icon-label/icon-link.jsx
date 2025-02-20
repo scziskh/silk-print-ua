@@ -5,19 +5,20 @@ import Icon from './icon';
 
 const IconLink = ({ icon, children, ...rest }) => {
   return (
-    <Wrapper {...rest}>
+    <StyledLink {...rest}>
       <Icon icon={icon} />
-      {children}
-    </Wrapper>
+      <span>{children}</span>
+    </StyledLink>
   );
 };
 
 export default IconLink;
 
-const Wrapper = styled.a`
-  display: grid;
+const StyledLink = styled.a`
+  display: inline-flex;
   grid-template-columns: 28px 1fr;
   align-items: center;
   gap: 12px;
   font-weight: normal !important;
+  color: inherit;
 `;

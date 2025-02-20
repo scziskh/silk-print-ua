@@ -9,24 +9,28 @@ const FooterContacts = () => {
   const { data, error, isLoading } = useGetContactsQuery();
 
   if (error) {
-    return <ErrorWrapper>Error: {error.message}</ErrorWrapper>;
+    return <ErrorWrapper>Error: {error?.message || 'Failed to load contacts'}</ErrorWrapper>;
   }
 
   if (isLoading) {
     return (
-      <LoadingWrapper>
+      <LoadingComponentWrapper>
         <LoadingComponent />
-      </LoadingWrapper>
+      </LoadingComponentWrapper>
     );
   }
 
   if (!data) {
-    return null;
+    return (
+      <ErrorWrapper>
+        <p>No contacts available</p>
+      </ErrorWrapper>
+    );
   }
 
   const { phone, email, instagram } = data;
 
-  const iconLinks = [
+  const contacts = [
     { icon: 'phone', href: `tel:${phone}`, text: phone },
     { icon: 'mail', href: `mailto:${email}`, text: email },
     { icon: 'instagram', href: `https://www.instagram.com/${instagram}/`, text: instagram },
@@ -34,7 +38,7 @@ const FooterContacts = () => {
 
   return (
     <Wrapper>
-      {iconLinks.map(({ icon, href, text }) => (
+      {contacts.map(({ icon, href, text }) => (
         <IconLink key={icon} icon={icon} href={href} target="_blank">
           {text}
         </IconLink>
@@ -48,16 +52,21 @@ export default FooterContacts;
 const Wrapper = styled.div`
   display: flex;
   gap: var(--gap);
-  justify-content: end;
+  justify-content: flex-end;
+  @media screen and (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
-const LoadingWrapper = styled.div`
+const LoadingComponentWrapper = styled.div`
   height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ErrorWrapper = styled.div`
-  display: flex;
-  gap: var(--gap);
-  justify-content: end;
   color: red;
+  text-align: center;
 `;

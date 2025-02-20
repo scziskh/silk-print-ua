@@ -7,19 +7,19 @@ import FooterMenu from './menu';
 import FooterContacts from './contacts';
 
 const Footer = () => {
-  const currYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
   return (
     <Wrapper>
       <Container>
         <FooterMenu />
-        <Hr />
-        <Grid>
-          <div>
-            <Link href="">Silk Print</Link> © 2019-{currYear}
-          </div>
+        <Divider />
+        <Content>
+          <Copyright>
+            <Link href="">Silk Print</Link> © 2019-{currentYear}
+          </Copyright>
           <FooterContacts />
-        </Grid>
+        </Content>
       </Container>
     </Wrapper>
   );
@@ -33,27 +33,29 @@ const Wrapper = styled.footer`
   box-shadow: var(--darkShadow);
 `;
 
-const Hr = styled.div`
+const Divider = styled.hr`
   height: 1px;
   background: var(--mainGrad);
   width: 100%;
   margin: calc(var(--gap) - 15px) 0 var(--gap);
+  border: none;
 `;
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 300px 1fr;
+const Content = styled.div`
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   a {
     font-weight: bold;
     &:hover {
       text-decoration: underline;
     }
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap);
+  }
 `;
 
-const Contacts = styled.div`
-  display: flex;
-  gap: var(--gap);
-  justify-content: end;
-`;
+const Copyright = styled.div``;

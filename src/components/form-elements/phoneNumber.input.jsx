@@ -7,13 +7,13 @@ import PhoneInput from 'react-phone-number-input/input';
 const PhoneNumberInput = ({ name, control, ...rest }) => {
   return (
     <ConnectForm>
-      {({ register }) => (
+      {({ control }) => (
         <Controller
-          render={({ field }) => (
-            <PhoneInput {...field} className="field" {...rest} maxLength={16} country="UA" international withCountryCallingCode={true} />
-          )}
-          {...register(name)}
+          name={name}
           control={control}
+          render={({ field }) => (
+            <PhoneInput {...field} className="field" {...rest} maxLength={16} country="UA" international withCountryCallingCode />
+          )}
         />
       )}
     </ConnectForm>

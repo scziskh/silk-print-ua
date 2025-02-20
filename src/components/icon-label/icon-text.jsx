@@ -5,18 +5,17 @@ import Icon from './icon';
 
 const IconText = ({ icon, children, ...rest }) => {
   return (
-    <Wrapper {...rest}>
+    <StyledContainer {...rest}>
       <Icon icon={icon} />
-      {children}
-    </Wrapper>
+      <span>{children}</span>
+    </StyledContainer>
   );
 };
 
 export default IconText;
 
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 28px 1fr;
+const StyledContainer = styled.div`
+  display: inline-flex;
   align-items: center;
   gap: 12px;
 `;

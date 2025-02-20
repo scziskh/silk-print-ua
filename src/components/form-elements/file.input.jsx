@@ -8,10 +8,10 @@ const FileInput = ({ name, control, label, ...rest }) => {
     <ConnectForm>
       {({ register }) => (
         <>
-          <Input {...register(name)} {...rest} type="file" id={name} />
-          <Label htmlFor={name} className="field">
+          <StyledInput {...register(name)} {...rest} type="file" id={name} />
+          <StyledLabel htmlFor={name} className="field">
             {label}
-          </Label>
+          </StyledLabel>
         </>
       )}
     </ConnectForm>
@@ -20,12 +20,12 @@ const FileInput = ({ name, control, label, ...rest }) => {
 
 export default FileInput;
 
-const Input = styled.input`
+const StyledInput = styled.input`
   display: none;
   visibility: hidden;
 `;
 
-const Label = styled.label`
+const StyledLabel = styled.label`
   display: block;
   line-height: 30px;
   text-align: center;

@@ -4,13 +4,17 @@
 import { Link } from '@/i18n/routing';
 import styled from 'styled-components';
 
-const ButtonLink = (props) => {
-  return <Wrapper href={props.href}>{props.label}</Wrapper>;
+const ButtonLink = ({ href, label, ...rest }) => {
+  return (
+    <StyledLink href={href} {...rest}>
+      {label}
+    </StyledLink>
+  );
 };
 
 export default ButtonLink;
 
-const Wrapper = styled(Link)`
+const StyledLink = styled(Link)`
   font-size: 1.05em;
   margin-top: 24px;
   display: block;
@@ -26,5 +30,6 @@ const Wrapper = styled(Link)`
     color: var(--contrastColor);
     text-shadow: var(--darkShadow);
     background: var(--secondaryGrad);
+    border-color: transparent;
   }
 `;

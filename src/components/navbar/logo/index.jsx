@@ -9,9 +9,9 @@ import styled from 'styled-components';
 const Logo = () => {
   const tLogo = useTranslations('Logo');
   return (
-    <Wrapper>
-      <Link href="">
-        <Image
+    <StyledLogoContainer>
+      <StyledLink href="">
+        <StyledImage
           src="/assets/logo.svg"
           alt={tLogo('alt')}
           title={tLogo('title')}
@@ -19,15 +19,25 @@ const Logo = () => {
           height={40}
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM88R8AApUByU2MEcEAAAAASUVORK5CYII="
+          priority
         />
-      </Link>
-    </Wrapper>
+      </StyledLink>
+    </StyledLogoContainer>
   );
 };
 
 export default Logo;
 
-const Wrapper = styled.div`
+const StyledLogoContainer = styled.div`
   width: 155px;
   height: 40px;
+  display: inline-block;
+`;
+
+const StyledLink = styled(Link)`
+  display: block;
+`;
+
+const StyledImage = styled(Image)`
+  display: block;
 `;
