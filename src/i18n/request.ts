@@ -5,14 +5,20 @@ export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;
 
   if (!locale || !routing.locales.includes(locale as any)) {
-    if (locale === 'ua') {
-      locale = 'uk';
-    }
-    locale = routing.defaultLocale;
+    locale = locale === 'ua' ? 'uk' : routing.defaultLocale;
   }
 
-  return {
-    locale,
-    messages: (await import(`../../messages/${locale}.json`)).default,
-  };
+  try {
+    const messages = (await import(`../../messages/${locale}.json`)).default;
+    return {
+      locale,
+      messages,
+    };
+  } catch (error) {
+    console.error(`Error loading messages for locale ${locale}:`, error);
+    return {
+      locale: routing.defaultLocale,
+      messages: (await import(`../../messages/${routing.defaultLocale}.json`)).default,
+    };
+  }
 });
