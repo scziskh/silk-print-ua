@@ -26,16 +26,21 @@ const FeedbackSection = (props) => {
         <FormProvider {...methods}>
           <StyledForm onSubmit={methods.handleSubmit(onSubmit)}>
             <StyledMainGrid>
-              <Input type="email" name="email2" placeholder={t('email')} required />
+              <Input type="email" name="email2" placeholder={t('email')} aria-label="Enter your email" required />
               <StyledInnerGrid>
-                <Input type="text" name="name" placeholder={t('name')} required />
-                <PhoneNumberInput name="phone" placeholder={t('phone')} control={methods.control} />
+                <Input type="text" name="name" placeholder={t('name')} aria-label="Enter your name" required />
+                <PhoneNumberInput name="phone" placeholder={t('phone')} aria-label="Enter your phone number" control={methods.control} />
               </StyledInnerGrid>
             </StyledMainGrid>
-            <TextArea name="text" placeholder={t('text')} required />
+            <TextArea name="text" placeholder={t('text')} aria-label="Enter your message" required />
             <StyledFileInputGrid>
-              <FileInput name="files" label={methods.getValues('files')?.[0]?.name ?? t('files')} control={methods.control} />
-              <Button label={t('button')} />
+              <FileInput
+                name="files"
+                label={methods.getValues('files')?.[0]?.name ?? t('files')}
+                control={methods.control}
+                aria-label="Attach a file with the layout"
+              />
+              <Button label={t('button')} aria-label="Click to send message" />
             </StyledFileInputGrid>
           </StyledForm>
         </FormProvider>
@@ -58,6 +63,7 @@ const StyledInnerGrid = styled.div`
 
   @media screen and (max-width: 1024px) {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 `;
 
@@ -68,13 +74,13 @@ const StyledMainGrid = styled(StyledInnerGrid)`
 `;
 
 const StyledFileInputGrid = styled.div`
-  display: flex;
+  display: grid;
   align-items: center;
   gap: var(--gap);
-  flex-direction: column;
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-    justify-content: flex-end;
+  grid-template-columns: 1fr 200px;
+  @media screen and (max-width: 768px) {
+    gap: 0;
+    grid-template-columns: 1fr;
   }
   button {
     margin-left: auto;

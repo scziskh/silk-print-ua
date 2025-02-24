@@ -26,7 +26,7 @@ const MainScreenSection = () => {
           <h1>{t('header')}</h1>
           <p>{t('paragraph_1')}</p>
           <p>{t('paragraph_2')}</p>
-          <ButtonLink href="services" label={t('link')} />
+          <ButtonLink href="services" label={t('link')} aria-label="Go to services page" />
         </StyledTextContent>
       </Container>
     </StyledMainScreenSection>

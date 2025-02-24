@@ -18,7 +18,7 @@ const WorksSection = () => {
       <Container>
         <h2>{t('header')}</h2>
         <WorksGallery />
-        <ButtonLink href="works" label={t('link')} />
+        <ButtonLink href="works" label={t('link')} aria-label="Show all works" />
       </Container>
     </StyledWorksSection>
   );

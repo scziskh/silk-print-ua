@@ -20,7 +20,7 @@ const PaperSection = () => {
       <Container>
         <h2>{t('header')}</h2>
         <StyledTextContent>{t.rich('html', translationsConfig)}</StyledTextContent>
-        <ButtonLink href="paper" label={tButtons('details')} />
+        <ButtonLink href="paper" label={tButtons('details')} aria-label="Go to the page with paper" />
       </Container>
     </StyledPaperSection>
   );

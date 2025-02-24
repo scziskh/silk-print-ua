@@ -3,6 +3,7 @@
 import styled from 'styled-components';
 import { Link } from '@/i18n/routing';
 import Container from '@/layouts/container';
+import LocaleSwitcher from '@/components/locale-switcher';
 import FooterMenu from './menu';
 import FooterContacts from './contacts';
 
@@ -20,6 +21,7 @@ const Footer = () => {
           </Copyright>
           <FooterContacts />
         </Content>
+        <LocaleSwitcher />
       </Container>
     </Wrapper>
   );
