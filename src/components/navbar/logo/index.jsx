@@ -3,14 +3,14 @@
 /*Libs*/
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import styled from 'styled-components';
 
 const Logo = () => {
   const tLogo = useTranslations('Logo');
   return (
     <StyledLogoContainer>
-      <StyledLink href="">
+      <StyledLink href="/">
         <StyledImage
           src="/assets/logo.svg"
           alt={tLogo('alt')}

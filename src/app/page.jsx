@@ -1,5 +1,5 @@
 import { routing } from '@/i18n/routing';
-import { redirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation'; // Импортируем именно permanentRedirect
 
 export const generateMetadata = async () => {
   return {
@@ -8,7 +8,7 @@ export const generateMetadata = async () => {
       'Премиум визитки с тиснением золотой и серебряной фольгой, высечкой, выборочным лаком. ➢ На черной, цветной бумаге, пластике в Киеве.',
     metadataBase: new URL('https://silk-print.com.ua'),
     alternates: {
-      canonical: `/ru/`,
+      canonical: `/uk/`,
       languages: {
         ru: '/ru/',
         uk: '/uk/',
@@ -18,5 +18,5 @@ export const generateMetadata = async () => {
 };
 
 export default function RootPage() {
-  redirect(routing.defaultLocale);
+  permanentRedirect(`/${routing.defaultLocale}`);
 }

@@ -1,16 +1,12 @@
 'use client';
 
-/*Libs*/
 import styled from 'styled-components';
-
-/*Layouts */
 import Container from '@/layouts/container';
 import { useTranslations } from 'next-intl';
 import ButtonLink from '../link/button.link';
 import { translationsConfig } from '@/configs/translations.config';
 
 const PaperSection = () => {
-  /*Translations*/
   const t = useTranslations('PaperSection');
   const tButtons = useTranslations('Buttons');
 

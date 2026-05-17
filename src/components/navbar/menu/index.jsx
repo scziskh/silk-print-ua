@@ -4,23 +4,23 @@ import { useTranslations } from 'next-intl';
 import styled, { css } from 'styled-components';
 import MenuLink from '../../link/menu.link';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname } from '@/i18n/routing';
 
 const NavbarMenu = () => {
   const tMainMenu = useTranslations('MainMenu');
-  const router = useRouter();
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // More descriptive name
 
   useEffect(() => {
     setIsMobileMenuOpen(false); // Close menu on route change
-  }, [router]);
+  }, [pathname]);
 
   const menuList = [
-    { href: '', label: tMainMenu('homepage') },
-    { href: 'services', label: tMainMenu('services') },
-    { href: 'products', label: tMainMenu('products') },
-    { href: 'our-works', label: tMainMenu('our-works') },
-    { href: 'contacts', label: tMainMenu('contacts') },
+    { href: '/', label: tMainMenu('homepage') },
+    { href: '/services', label: tMainMenu('services') },
+    { href: '/products', label: tMainMenu('products') },
+    { href: '/our-works', label: tMainMenu('our-works') },
+    { href: '/contacts', label: tMainMenu('contacts') },
   ];
 
   return (

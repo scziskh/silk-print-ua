@@ -1,13 +1,8 @@
 'use client';
 
-/*Libs*/
 import { useTranslations } from 'next-intl';
 import styled from 'styled-components';
-
-/*Layouts*/
 import Container from '@/layouts/container';
-
-/*Components*/
 import ButtonLink from '@/components/link/button.link';
 import DarkImage from '@/layouts/dark-image';
 

@@ -7,7 +7,6 @@ import Container from '@/layouts/container';
 import TextArea from '../form-elements/textarea';
 import { useTranslations } from 'next-intl';
 import PhoneNumberInput from '../form-elements/phoneNumber.input';
-import { useEffect } from 'react';
 import FileInput from '../form-elements/file.input';
 import Button from '../form-elements/button';
 
@@ -51,7 +50,9 @@ const FeedbackSection = (props) => {
 
 export default FeedbackSection;
 
-const StyledFeedbackSection = styled.section``;
+const StyledFeedbackSection = styled.section`
+  margin-bottom: 24px;
+`;
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;

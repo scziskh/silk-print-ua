@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@/i18n/routing';
 import Container from '@/layouts/container';
@@ -7,27 +8,29 @@ import LocaleSwitcher from '@/components/locale-switcher';
 import FooterMenu from './menu';
 import FooterContacts from './contacts';
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
+const currentYear = new Date().getFullYear();
 
+const Footer = () => {
   return (
     <Wrapper>
       <Container>
         <FooterMenu />
-        <Divider />
+        <Divider aria-hidden="true" />
+
         <Content>
           <Copyright>
-            <Link href="">Silk Print</Link> © 2019-{currentYear}
+            <Link href="/">Silk Print</Link> &copy; 2019–{currentYear}
           </Copyright>
           <FooterContacts />
         </Content>
+
         <LocaleSwitcher />
       </Container>
     </Wrapper>
   );
 };
 
-export default Footer;
+export default React.memo(Footer);
 
 const Wrapper = styled.footer`
   padding: var(--gap) 0;
@@ -47,17 +50,20 @@ const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   a {
     font-weight: bold;
     &:hover {
       text-decoration: underline;
     }
   }
+
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
     gap: var(--gap);
   }
 `;
-
-const Copyright = styled.div``;
+const Copyright = styled.p`
+  margin: 0;
+`;

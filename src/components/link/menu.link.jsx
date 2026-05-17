@@ -1,10 +1,13 @@
 'use client';
 
-/*Libs*/
 import { Link } from '@/i18n/routing';
 import styled from 'styled-components';
 
-const MenuLink = ({ href, label }) => <StyledLink href={href}>{label}</StyledLink>;
+const MenuLink = ({ href, label, ...props }) => (
+  <StyledLink href={href} {...props}>
+    {label}
+  </StyledLink>
+);
 
 export default MenuLink;
 
@@ -14,6 +17,7 @@ const StyledLink = styled(Link)`
   text-align: center;
   white-space: nowrap;
   color: inherit;
+  position: relative;
 
   &::after {
     content: '';
@@ -22,9 +26,13 @@ const StyledLink = styled(Link)`
     margin-top: 5px;
     background: var(--secondaryGrad);
     width: 100%;
+
     transform: translateY(5px);
     opacity: 0;
-    transition-duration: var(--transitionDuration);
+    transition:
+      transform var(--transitionDuration) ease,
+      opacity var(--transitionDuration) ease;
+    will-change: transform, opacity;
   }
 
   &:hover::after {

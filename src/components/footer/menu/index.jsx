@@ -1,23 +1,19 @@
 'use client';
 
-/*Libs*/
+import React from 'react';
 import { useTranslations } from 'next-intl';
 import styled from 'styled-components';
-
-/*Components*/
 import MenuLink from '../../link/menu.link';
 
+const MENU_LIST = ['layout-requirements', 'payment-and-delivery', 'terms', 'privacy-policy', 'faq'];
+
 const FooterMenu = () => {
-  /*Translations*/
   const tFooterMenu = useTranslations('FooterMenu');
 
-  /*Lists*/
-  const menuList = ['layout-requirements', 'payment-and-delivery', 'terms', 'privacy-policy', 'faq'];
-
   return (
-    <Wrapper>
+    <Wrapper aria-label="Дополнительное меню">
       <ul>
-        {menuList.map((key) => (
+        {MENU_LIST.map((key) => (
           <MenuItem key={key}>
             <MenuLink href={key} label={tFooterMenu(key)} />
           </MenuItem>
@@ -26,15 +22,16 @@ const FooterMenu = () => {
     </Wrapper>
   );
 };
-
-export default FooterMenu;
+export default React.memo(FooterMenu);
 
 const Wrapper = styled.nav`
   display: flex;
   align-items: center;
+
   a {
     color: var(--mainColor);
   }
+
   ul {
     width: 100%;
     display: flex;
@@ -42,14 +39,15 @@ const Wrapper = styled.nav`
     gap: 24px;
     justify-content: space-between;
     padding: 0;
+    margin: 0;
+
     @media screen and (max-width: 1280px) {
       flex-direction: column;
-      transition-duration: var(--transitionDuration);
     }
   }
 `;
 
 const MenuItem = styled.li`
-  justify-content: center;
   display: flex;
+  justify-content: center;
 `;

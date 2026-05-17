@@ -1,59 +1,16 @@
 'use client';
 
-/* Libs */
 import Image from 'next/image';
 import styled from 'styled-components';
-import { useTranslations } from 'use-intl';
-
-/* Layouts */
+import { useTranslations } from 'next-intl';
 import Container from '@/layouts/container';
-
-/* Configs */
 import { translationsConfig } from '@/configs/translations.config';
-import { useEffect, useRef, useState } from 'react';
 
 const ServiceAboutSection = () => {
   const t = useTranslations('ServicesAboutSection');
 
-  /* Sections */
-  const sectionRefs = {
-    stamping: {
-      text: useRef(null),
-      image: useRef(null),
-    },
-    foilStamping: {
-      text: useRef(null),
-      image: useRef(null),
-    },
-    whitePrinting: {
-      text: useRef(null),
-      image: useRef(null),
-    },
-  };
-
   const defaultWidth = 750;
   const defaultHeight = 562;
-
-  /* Resize sections */
-  useEffect(() => {
-    const resizeObservers = Object.values(sectionRefs)
-      .map(({ text, image }) => {
-        if (text.current && image.current) {
-          const resizeObserver = new ResizeObserver(() => {
-            const height = text.current.offsetHeight;
-            image.current.style.height = `${height}px`;
-          });
-          resizeObserver.observe(text.current);
-          return resizeObserver;
-        }
-        return null;
-      })
-      .filter((observer) => observer !== null);
-
-    return () => {
-      resizeObservers.forEach((observer) => observer.disconnect());
-    };
-  }, [sectionRefs]);
 
   return (
     <>
@@ -63,41 +20,43 @@ const ServiceAboutSection = () => {
           <StyledColumn>{t.rich('metalic-printing', translationsConfig)}</StyledColumn>
         </Container>
       </StyledSectionWrapper>
+
       <StyledSectionWrapper>
         <Container>
-          <StyledColumn ref={sectionRefs.stamping.text} id="stamping-section_text">
-            {t.rich('stamping', translationsConfig)}
-          </StyledColumn>
-          <StyledImageWrapper ref={sectionRefs.stamping.image} id="stamping-section_image">
+          <StyledColumn>{t.rich('stamping', translationsConfig)}</StyledColumn>
+          <StyledImageWrapper>
             <Image src="/assets/works/IMG_4636.webp" width={defaultWidth} height={defaultHeight} alt="Stamping Section Image" />
           </StyledImageWrapper>
         </Container>
       </StyledSectionWrapper>
+
       <StyledSectionWrapper>
         <Container>
           <StyledColumn>{t.rich('die-cutting', translationsConfig)}</StyledColumn>
           <StyledColumn>{t.rich('kashi', translationsConfig)}</StyledColumn>
         </Container>
       </StyledSectionWrapper>
+
       <StyledSectionWrapper>
         <Container>
-          <StyledImageWrapper ref={sectionRefs.foilStamping.image}>
+          <StyledImageWrapper>
             <Image src="/assets/works/IMG_4905.webp" width={defaultWidth} height={defaultHeight} alt="Foil Stamping Image" />
           </StyledImageWrapper>
-          <StyledColumn ref={sectionRefs.foilStamping.text}>{t.rich('foil-stamping', translationsConfig)}</StyledColumn>
+          <StyledColumn>{t.rich('foil-stamping', translationsConfig)}</StyledColumn>
         </Container>
       </StyledSectionWrapper>
+
       <StyledSectionWrapper>
         <Container>
           <StyledColumn>{t.rich('varnish-printing', translationsConfig)}</StyledColumn>
           <StyledColumn>{t.rich('thermography', translationsConfig)}</StyledColumn>
         </Container>
       </StyledSectionWrapper>
+
       <StyledSectionWrapper>
         <Container>
-          <StyledColumn ref={sectionRefs.whitePrinting.text}>{t.rich('white-printing', translationsConfig)}</StyledColumn>
-
-          <StyledImageWrapper ref={sectionRefs.whitePrinting.image}>
+          <StyledColumn>{t.rich('white-printing', translationsConfig)}</StyledColumn>
+          <StyledImageWrapper>
             <Image src="/assets/works/IMG_4710.webp" width={defaultWidth} height={defaultHeight} alt="White Printing Image" />
           </StyledImageWrapper>
         </Container>
@@ -113,32 +72,44 @@ const StyledSectionWrapper = styled.section`
     background: var(--contrastGrad);
     box-shadow: var(--darkShadow);
   }
+
   & > div {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--gap);
     padding: var(--gap) 0;
+
     @media screen and (max-width: 1024px) {
       grid-template-columns: 1fr;
     }
   }
+
   h2 {
     padding-bottom: calc(var(--gap) - 24px);
   }
 `;
 
 const StyledColumn = styled.div`
-  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const StyledImageWrapper = styled.div`
+  position: relative;
   width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border-radius: var(--radius);
   overflow: hidden;
-  display: flex;
+
   img {
-    min-width: 100%;
-    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    align-self: center;
+    object-position: center;
   }
 `;

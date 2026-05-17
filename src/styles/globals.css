@@ -17,6 +17,7 @@
   background-color: var(--secondaryColor);
   color: var(--contrastColor);
 }
+
 html,
 body {
   color: var(--mainColor);
@@ -44,6 +45,11 @@ h2 {
   font-size: 1.8em;
   font-weight: bold;
   margin-top: 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 section {
