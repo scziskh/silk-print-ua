@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import SilkScreenClient from './client';
+import FeedbackSection from '@/components/sections/feedback.section';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -15,5 +16,10 @@ export async function generateMetadata({ params }) {
 }
 
 export default function Page() {
-  return <SilkScreenClient />;
+  return (
+    <>
+      <SilkScreenClient />
+      <FeedbackSection />
+    </>
+  );
 }

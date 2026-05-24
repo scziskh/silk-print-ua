@@ -8,6 +8,7 @@ import { translationsConfig } from '@/configs/translations.config';
 
 const ServiceAboutSection = () => {
   const t = useTranslations('ServicesAboutSection');
+  const tImages = useTranslations('WorksList');
 
   const defaultWidth = 750;
   const defaultHeight = 562;
@@ -25,7 +26,12 @@ const ServiceAboutSection = () => {
         <Container>
           <StyledColumn>{t.rich('stamping', translationsConfig)}</StyledColumn>
           <StyledImageWrapper>
-            <Image src="/assets/works/IMG_4636.webp" width={defaultWidth} height={defaultHeight} alt="Stamping Section Image" />
+            <Image
+              src="/assets/works/vizytky-advokat-dupleks-kashyruvannia-blint-yakir.webp"
+              width={defaultWidth}
+              height={defaultHeight}
+              alt={tImages('vizytky-advokat-dupleks-kashyruvannia-blint-yakir.alt')}
+            />
           </StyledImageWrapper>
         </Container>
       </StyledSectionWrapper>
@@ -40,7 +46,12 @@ const ServiceAboutSection = () => {
       <StyledSectionWrapper>
         <Container>
           <StyledImageWrapper>
-            <Image src="/assets/works/IMG_4905.webp" width={defaultWidth} height={defaultHeight} alt="Foil Stamping Image" />
+            <Image
+              src="/assets/works/vizytky-plike-chornyi-hariache-tysnennia-zolotoiu-folhoiu.webp"
+              width={defaultWidth}
+              height={defaultHeight}
+              alt={tImages('vizytky-plike-chornyi-hariache-tysnennia-zolotoiu-folhoiu.alt')}
+            />
           </StyledImageWrapper>
           <StyledColumn>{t.rich('foil-stamping', translationsConfig)}</StyledColumn>
         </Container>
@@ -57,7 +68,12 @@ const ServiceAboutSection = () => {
         <Container>
           <StyledColumn>{t.rich('white-printing', translationsConfig)}</StyledColumn>
           <StyledImageWrapper>
-            <Image src="/assets/works/IMG_4710.webp" width={defaultWidth} height={defaultHeight} alt="White Printing Image" />
+            <Image
+              src="/assets/works/vizytky-wild-bavovniany-papir-shovkohrafiia-bilym.webp"
+              width={defaultWidth}
+              height={defaultHeight}
+              alt={tImages('vizytky-wild-bavovniany-papir-shovkohrafiia-bilym.alt')}
+            />
           </StyledImageWrapper>
         </Container>
       </StyledSectionWrapper>

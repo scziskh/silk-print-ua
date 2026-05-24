@@ -9,7 +9,7 @@ const SingleWork = (props) => {
   const t = useTranslations('WorksList');
   return (
     <StyledWorkContainer>
-      <StyledImage src={`/assets/works/${item}.webp`} alt={t(`${item}.alt`)} title={t(`${item}.alt`)} height={460} width={460} />
+      <StyledImage src={`/assets/works/${item}.webp`} alt={t(`${item}.alt`)} title={t(`${item}.title`)} height={460} width={460} />
     </StyledWorkContainer>
   );
 };
