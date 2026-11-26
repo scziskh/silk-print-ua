@@ -29,7 +29,7 @@ const LocaleLayout = async ({ children, params }) => {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={mulish.className}>
+    <html lang={locale} className={mulish.className} suppressHydrationWarning>
       <head>
         <LocalBusinessSchema locale={locale} />
       </head>

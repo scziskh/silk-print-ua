@@ -3,17 +3,19 @@
 import { useTranslations } from 'next-intl';
 import styled, { css } from 'styled-components';
 import MenuLink from '../../link/menu.link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { usePathname } from '@/i18n/routing';
 
 const NavbarMenu = () => {
   const tMainMenu = useTranslations('MainMenu');
   const pathname = usePathname();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // More descriptive name
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
 
-  useEffect(() => {
-    setIsMobileMenuOpen(false); // Close menu on route change
-  }, [pathname]);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setIsMobileMenuOpen(false);
+  }
 
   const menuList = [
     { href: '/', label: tMainMenu('homepage') },

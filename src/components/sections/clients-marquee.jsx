@@ -3,6 +3,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 const CLIENTS = [
   { id: 1, name: 'Домосфера', url: '/assets/clients/client-1.svg' },
@@ -24,7 +25,7 @@ const ClientsMarqueeSection = () => {
         <MarqueeContent>
           {CLIENTS.map((client) => (
             <LogoCard key={client.id}>
-              <img alt={client.name} src={client.url} loading="lazy" />
+              <Image alt={client.name} src={client.url} loading="lazy" width={100} height={64} />
             </LogoCard>
           ))}
         </MarqueeContent>
@@ -32,7 +33,7 @@ const ClientsMarqueeSection = () => {
         <MarqueeContent aria-hidden="true">
           {CLIENTS.map((client) => (
             <LogoCard key={`duplicate-${client.id}`}>
-              <img alt={client.name} src={client.url} loading="lazy" />
+              <Image alt={client.name} src={client.url} loading="lazy" width={100} height={64} />
             </LogoCard>
           ))}
         </MarqueeContent>

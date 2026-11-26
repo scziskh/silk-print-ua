@@ -13,16 +13,16 @@ export default function SilkScreenClient() {
   const locale = useLocale();
 
   const galleryImages = [
-    { src: '/assets/works/small_IMG_4703.webp' },
-    { src: '/assets/works/small_IMG_4842.webp' },
-    { src: '/assets/works/small_IMG_4710.webp' },
+    { src: '/assets/service/silk_screen_printing-1.webp' },
+    { src: '/assets/service/silk_screen_printing-2.webp' },
+    { src: '/assets/service/silk_screen_printing-3.webp' },
   ];
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: t('hero.title'),
-    image: 'https://silk-print.com.ua/webp/works/small_IMG_4703.webp',
+    image: '/assets/service/silk_screen_printing-1.webp',
     description: tMeta('description'),
     brand: {
       '@type': 'Brand',
@@ -173,10 +173,6 @@ const PageWrapper = styled.main`
   }
 `;
 
-// ==========================================
-// 3. МИКРО-КОМПОНЕНТЫ И СТИЛИ (Деструктуризация)
-// ==========================================
-
 const TextContent = styled.div`
   p {
     margin-bottom: 20px;
@@ -283,10 +279,8 @@ const TableWrapper = styled.div`
 const ComparisonTable = ({ title, headers, rows }) => (
   <ComparisonStyled>
     <h3>{title}</h3>
-    {/* Обертка, которая будет скроллиться на мобилках */}
     <div className="table-responsive">
       <div className="b-table">
-        {/* Заголовки в отдельной строке */}
         <div className="b-tr b-header">
           {headers.map((h, i) => (
             <div key={`th-${i}`} className="b-td">
@@ -294,7 +288,6 @@ const ComparisonTable = ({ title, headers, rows }) => (
             </div>
           ))}
         </div>
-        {/* Каждая строка рендерится как самостоятельный grid-контейнер */}
         {rows.map((row, i) => (
           <div key={i} className="b-tr data-row">
             {row.map((cell, j) => (
@@ -312,13 +305,11 @@ const ComparisonTable = ({ title, headers, rows }) => (
 const ComparisonStyled = styled.div`
   margin: 40px 0;
 
-  /* 1. Адаптивная обертка */
   .table-responsive {
     width: 100%;
-    overflow-x: auto; /* Включаем горизонтальный скролл при выходе за пределы экрана */
-    -webkit-overflow-scrolling: touch; /* Плавный инерционный скролл на iOS */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 
-    /* Скрываем стандартный некрасивый скроллбар в некоторых браузерах (опционально) */
     &::-webkit-scrollbar {
       height: 6px;
     }
@@ -333,13 +324,11 @@ const ComparisonStyled = styled.div`
     flex-direction: column;
     gap: 2px;
     width: 100%;
-    /* 2. Задаем минимальную ширину, ниже которой таблица сжиматься не будет */
     min-width: 650px;
   }
 
   .b-tr {
     display: grid;
-    /* Пропорции колонок: текст занимает больше места, оценки — поровну */
     grid-template-columns: 2.2fr 1fr 1fr 1fr;
     width: 100%;
     background: #fff;
@@ -349,9 +338,9 @@ const ComparisonStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 12px; /* Чуть увеличил отступы для кликабельности и читаемости */
+    padding: 10px 12px;
     text-align: center;
-    min-height: 44px; /* 44px — рекомендация Google для мобильных элементов */
+    min-height: 44px;
     background: transparent;
   }
 
@@ -371,7 +360,6 @@ const ComparisonStyled = styled.div`
     text-align: left;
   }
 
-  /* Небольшая оптимизация шрифтов для мобильных экранов внутри таблицы */
   @media (max-width: 768px) {
     h3 {
       font-size: 1.3em;

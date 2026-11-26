@@ -16,7 +16,7 @@ const ReviewsSection = () => {
           {reviewsData.map((review) => (
             <Card key={review.id}>
               <Stars>{'★'.repeat(review.rating)}</Stars>
-              <Text>"{review.text}"</Text>
+              <Text>«{review.text}»</Text>
               <Footer>
                 <Author>{review.name}</Author>
                 <DateText>{review.date}</DateText>

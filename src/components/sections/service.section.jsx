@@ -15,18 +15,14 @@ import { categorizedWorks } from '@/configs/works';
 const ServiceSection = ({ data }) => {
   const { sectionKey, href, galleryItems, textBlocks } = data;
 
-  // Хук для секції послуг (залишається без змін)
   const t = useTranslations(sectionKey);
 
-  // ДОДАНО: Хук для підтягування SEO-описів картинок.
-  // ВАЖЛИВО: Якщо ти поклав об'єкти картинок у корінь uk.json, використовуй useTranslations()
-  // Якщо ти створив для них окремий ключ, наприклад "seoImages": {...}, то напиши useTranslations('seoImages')
   const tSeo = useTranslations('WorksList');
 
   const [modal, setModal] = useState({
     isOpen: false,
     images: [],
-    imageSlugs: [], // Зберігаємо слаги для пошуку в словнику
+    imageSlugs: [],
     currentIndex: 0,
     categoryTitle: '',
   });
@@ -45,7 +41,7 @@ const ServiceSection = ({ data }) => {
     setModal({
       isOpen: true,
       images: fullImages,
-      imageSlugs: imageIds, // Передаємо масив слагов
+      imageSlugs: imageIds,
       currentIndex: 0,
       categoryTitle: t(`items.${itemId}`),
     });
@@ -69,10 +65,8 @@ const ServiceSection = ({ data }) => {
     }));
   }, []);
 
-  // ДОДАНО: Отримуємо поточний слаг та безпечно витягуємо переклади
   const currentSlug = modal.imageSlugs[modal.currentIndex];
 
-  // Перевіряємо чи існує ключ, щоб next-intl не викинув помилку MISSING_MESSAGE
   const currentImageTitle = currentSlug && tSeo.has(`${currentSlug}.title`) ? tSeo(`${currentSlug}.title`) : 'Ексклюзивна поліграфія'; // Fallback текст, якщо опису немає
 
   const currentImageAlt = currentSlug && tSeo.has(`${currentSlug}.alt`) ? tSeo(`${currentSlug}.alt`) : 'Портфоліо візиток';

@@ -3,12 +3,18 @@
 import Footer from '@/components/footer';
 import LoadingComponent from '@/components/loading/component';
 import Navbar from '@/components/navbar';
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
+
+const emptySubscribe = () => () => {};
 
 const ClientLayout = ({ children }) => {
-  const [isFallback, setIsFallback] = useState(true);
-  useEffect(() => setIsFallback(false), []);
-  return isFallback ? (
+  const isClient = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
+
+  return !isClient ? (
     <LoadingComponent />
   ) : (
     <>
