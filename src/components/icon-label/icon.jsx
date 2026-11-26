@@ -20,7 +20,8 @@ const StyledIconContainer = styled.span`
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  background: var(--contrastGrad);
+  background: var(--iconWellBg);
+  border: 1px solid var(--borderSubtle);
   box-shadow: var(--darkShadow);
   overflow: hidden;
 `;

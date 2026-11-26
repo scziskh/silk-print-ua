@@ -48,7 +48,50 @@ export const GET_PRICING_SQL = `
   FROM product_trees;
 `;
 
+export const SERVICE_PRICE_MULTIPLIER = 1.36;
+
 export async function getPricingConfig(productSlug = null) {
   const { rows } = await pool.query(GET_PRICING_SQL, [productSlug]);
   return rows[0]?.pricing_config ?? {};
+}
+
+export function formatUahPrice(eurValue, eurRate, multiplier = SERVICE_PRICE_MULTIPLIER) {
+  const numeric = Number(eurValue);
+  if (!Number.isFinite(numeric) || !Number.isFinite(eurRate) || eurRate <= 0) {
+    return null;
+  }
+  return Math.ceil(numeric * eurRate * multiplier);
+}
+
+export function buildTieredPricingRows({
+  tierMap,
+  eurRate,
+  quantities = ['100', '200', '500', '1000'],
+  optionKeys = ['1_color', '2_colors', 'next_color'],
+  multiplier = SERVICE_PRICE_MULTIPLIER,
+  unitLabel = 'шт.',
+  currencySuffix = '₴',
+}) {
+  if (!tierMap || !Number.isFinite(eurRate) || eurRate <= 0) {
+    return null;
+  }
+
+  const rows = [];
+  for (const qty of quantities) {
+    const tier = tierMap[String(qty)];
+    if (!tier) return null;
+
+    const formattedCells = optionKeys.map((key) => {
+      const price = formatUahPrice(tier[key], eurRate, multiplier);
+      return price === null ? null : `${price} ${currencySuffix}`;
+    });
+
+    if (formattedCells.some((cell) => cell === null)) {
+      return null;
+    }
+
+    rows.push([`${qty} ${unitLabel}`, ...formattedCells]);
+  }
+
+  return rows;
 }

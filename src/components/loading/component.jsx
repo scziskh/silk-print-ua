@@ -48,14 +48,9 @@ const LoaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный белый фон */
-  backdrop-filter: blur(8px); /* Легкое размытие контента под лоадером */
+  background-color: var(--loaderBg);
+  backdrop-filter: blur(8px);
   z-index: 9999;
-
-  /* Поддержка темной темы, если она активна */
-  @media (prefers-color-scheme: dark) {
-    background-color: rgba(33, 33, 33, 0.9);
-  }
 `;
 
 const SpinnerWrapper = styled.div`

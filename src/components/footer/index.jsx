@@ -35,12 +35,13 @@ export default React.memo(Footer);
 const Wrapper = styled.footer`
   padding: var(--gap) 0;
   background: var(--contrastGrad);
+  border-top: 1px solid var(--borderSubtle);
   box-shadow: var(--darkShadow);
 `;
 
 const Divider = styled.hr`
   height: 1px;
-  background: var(--mainGrad);
+  background: var(--footerDividerBg);
   width: 100%;
   margin: calc(var(--gap) - 15px) 0 var(--gap);
   border: none;
@@ -66,4 +67,5 @@ const Content = styled.div`
 `;
 const Copyright = styled.p`
   margin: 0;
+  color: var(--mutedColor);
 `;

@@ -102,7 +102,7 @@ const ModalSlider = ({ isOpen, images, currentIndex, categoryTitle, imageTitle, 
 const ModalOverlay = styled.div`
   position: fixed;
   inset: 0;
-  background: rgba(240, 240, 242, 0.85);
+  background: var(--modalOverlayBg);
   backdrop-filter: blur(20px);
   z-index: 10000;
 `;
@@ -136,6 +136,7 @@ const ModalContent = styled.div`
   height: 90vh;
   max-width: 1200px;
   background: var(--contrastGrad);
+  border: 1px solid var(--borderSubtle);
   border-radius: var(--radius);
   padding: 40px 20px 20px;
   display: flex;
@@ -183,9 +184,10 @@ const NavButton = styled.button`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: none;
+  border: 1px solid var(--borderSubtle);
   cursor: pointer;
-  background: rgba(255, 255, 255);
+  color: var(--mainColor);
+  background: var(--modalNavBg);
   box-shadow: var(--darkShadow);
 
   transition: all var(--transitionDuration) ease;
@@ -222,7 +224,7 @@ const ModalFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  color: #333;
+  color: var(--modalFooterColor);
   @media (max-width: 768px) {
     min-height: 50px;
   }
@@ -232,6 +234,7 @@ const ModalFooter = styled.div`
   }
   span {
     white-space: nowrap;
+    color: var(--mutedColor);
   }
 `;
 

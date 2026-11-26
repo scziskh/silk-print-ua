@@ -131,6 +131,8 @@ const StyledSection = styled.section`
   overflow: hidden;
   &:nth-child(2n) {
     background: var(--contrastGrad);
+    border-top: 1px solid var(--borderSubtle);
+    border-bottom: 1px solid var(--borderSubtle);
     box-shadow: var(--darkShadow);
   }
   a {
@@ -230,8 +232,7 @@ const TextBlock = styled.article`
   p {
     margin-top: 0;
     line-height: 1.5;
-    color: var(--mainColor);
-    opacity: 0.85;
+    color: var(--serviceTextColor);
     font-size: 1rem;
   }
 `;

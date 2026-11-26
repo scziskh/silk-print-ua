@@ -4,6 +4,8 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
+  allowedDevOrigins: ['**.run.app', '*.run.app'],
   compiler: {
     styledComponents: true,
   },

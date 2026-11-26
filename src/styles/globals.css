@@ -1,7 +1,12 @@
 :root {
+  --bgCanvas: #ffffff;
+  --surfaceBg: #ffffff;
+  --surfaceElevated: #f6f7f9;
+  --borderSubtle: rgba(31, 33, 41, 0.1);
   --mainColor: #1f2129;
+  --mutedColor: #5a6270;
   --secondaryColor: #d4af37;
-  --contrastColor: white;
+  --contrastColor: #ffffff;
   --lightColor: #b6bfc0;
   --mainGrad: linear-gradient(60deg, #313131 0%, #313739 100%);
   --secondaryGrad: linear-gradient(60deg, #d4af37 0%, #bf9b30 100%);
@@ -10,25 +15,289 @@
   --darkShadow: 1px 0px 6px rgba(0, 0, 0, 0.3);
   --lightShadow: 1px 0px 6px rgba(255, 255, 255, 0.5);
   --radius: 10px;
+  --borderRadius: 10px;
   --gap: 32px;
+
+  --selectionText: #ffffff;
+  --fieldBg: transparent;
+  --fieldHoverOutline: #1f2129;
+  --strongColor: #000000;
+  --tableBg: #ffffff;
+  --tableOddBg: var(--contrastGrad);
+  --tableHeaderBg: var(--contrastGrad);
+  --modalOverlayBg: rgba(240, 240, 242, 0.85);
+  --modalNavBg: #ffffff;
+  --modalFooterColor: #333333;
+  --loaderBg: rgba(255, 255, 255, 0.9);
+  --paperImgOpacity: 0.8;
+  --paperImgFilter: none;
+  --paperScrim: transparent;
+  --clientLogoFilter: grayscale(100%);
+  --clientLogoHoverFilter: grayscale(0);
+  --clientLogoBlend: normal;
+  --clientLogoOpacity: 1;
+  --footerDividerBg: var(--mainGrad);
+  --scrollbarThumb: rgba(0, 0, 0, 0.12);
+  --iconWellBg: var(--contrastGrad);
+  --reviewBorder: rgba(212, 175, 55, 0.15);
+  --reviewDivider: rgba(182, 191, 192, 0.5);
+  --serviceTextColor: rgba(31, 33, 41, 0.85);
+
+  --adminBg: #f8fafc;
+  --adminText: #0f172a;
+  --adminMuted: #64748b;
+  --adminBorder: #e2e8f0;
+  --adminRowBorder: #f1f5f9;
+  --adminCardBg: #ffffff;
+  --adminCardHeaderBg: #f1f5f9;
+  --adminTheadBg: #f8fafc;
+  --adminTheadText: #475569;
+  --adminRowHover: #f8fafc;
+  --adminTdText: #1e293b;
+  --adminSubText: #94a3b8;
+  --adminInputBg: #ffffff;
+  --adminInputDirtyBg: #fffbeb;
+  --adminInputBorder: #cbd5e1;
+  --adminInputDirtyBorder: #fbbf24;
+  --adminInputDirtyText: #78350f;
+  --adminInputFocusBorder: #0f172a;
+  --adminInputFocusRing: rgba(15, 23, 42, 0.15);
+  --adminDirtyAccent: #b45309;
+  --adminTabBg: #ffffff;
+  --adminTabText: #334155;
+  --adminTabBorder: #cbd5e1;
+  --adminTabHoverBg: #f1f5f9;
+  --adminTabActiveBg: #0f172a;
+  --adminTabActiveText: #ffffff;
+  --adminTabActiveHoverBg: #1e293b;
+  --adminSaveBarBg: rgba(255, 255, 255, 0.96);
+  --adminBadgeBg: #e2e8f0;
+  --adminBadgeText: #334155;
+  --adminFlatBadgeBg: #eef2ff;
+  --adminFlatBadgeText: #4338ca;
+  --adminRateBg: #eff6ff;
+  --adminRateText: #1e40af;
+  --adminRateBorder: #bfdbfe;
+  --adminFallbackBg: #fff1f2;
+  --adminFallbackText: #9f1239;
+  --adminFallbackBorder: #fecdd3;
+  --adminSuccessBg: #ecfdf5;
+  --adminSuccessText: #065f46;
+  --adminSuccessBorder: #a7f3d0;
+  --adminErrorText: #e11d48;
+  --adminSecondaryBtnBg: #f1f5f9;
+  --adminSecondaryBtnHoverBg: #e2e8f0;
+  --adminSecondaryBtnText: #334155;
+  --adminPrimaryBtnBg: #0f172a;
+  --adminPrimaryBtnHoverBg: #1e293b;
+  --adminPrimaryBtnText: #ffffff;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bgCanvas: #0e1015;
+    --surfaceBg: #151821;
+    --surfaceElevated: #1c202b;
+    --borderSubtle: rgba(255, 255, 255, 0.08);
+    --mainColor: #f1f3f6;
+    --mutedColor: #9aa3b2;
+    --contrastColor: #ffffff;
+    --lightColor: rgba(255, 255, 255, 0.18);
+    --mainGrad: linear-gradient(135deg, #13161e 0%, #1b1f2a 100%);
+    --contrastGrad: linear-gradient(145deg, #151821 0%, #1b1f2a 100%);
+    --darkShadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+    --lightShadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    --selectionText: #0e1015;
+    --fieldBg: var(--surfaceElevated);
+    --fieldHoverOutline: rgba(255, 255, 255, 0.35);
+    --strongColor: #ffffff;
+    --tableBg: var(--surfaceBg);
+    --tableOddBg: var(--surfaceElevated);
+    --tableHeaderBg: var(--surfaceElevated);
+    --modalOverlayBg: rgba(8, 10, 14, 0.86);
+    --modalNavBg: var(--surfaceElevated);
+    --modalFooterColor: var(--mainColor);
+    --loaderBg: rgba(14, 16, 21, 0.9);
+    --paperImgOpacity: 0.24;
+    --paperImgFilter: brightness(0.75) contrast(1.1);
+    --paperScrim: linear-gradient(90deg, rgba(14, 16, 21, 0.92) 0%, rgba(14, 16, 21, 0.72) 60%, rgba(14, 16, 21, 0.35) 100%);
+    --clientLogoFilter: grayscale(100%) invert(1) contrast(1.35);
+    --clientLogoHoverFilter: grayscale(100%) invert(1) contrast(1.35);
+    --clientLogoBlend: screen;
+    --clientLogoOpacity: 0.78;
+    --footerDividerBg: var(--borderSubtle);
+    --scrollbarThumb: rgba(255, 255, 255, 0.18);
+    --iconWellBg: var(--surfaceElevated);
+    --reviewBorder: rgba(212, 175, 55, 0.22);
+    --reviewDivider: var(--borderSubtle);
+    --serviceTextColor: var(--mutedColor);
+
+    --adminBg: #0e1015;
+    --adminText: #f1f3f6;
+    --adminMuted: #9aa3b2;
+    --adminBorder: rgba(255, 255, 255, 0.09);
+    --adminRowBorder: rgba(255, 255, 255, 0.06);
+    --adminCardBg: #151821;
+    --adminCardHeaderBg: #1b1f2a;
+    --adminTheadBg: #12151d;
+    --adminTheadText: #9aa3b2;
+    --adminRowHover: rgba(255, 255, 255, 0.03);
+    --adminTdText: #e2e8f0;
+    --adminSubText: #64748b;
+    --adminInputBg: #0e1015;
+    --adminInputDirtyBg: rgba(212, 175, 55, 0.14);
+    --adminInputBorder: rgba(255, 255, 255, 0.14);
+    --adminInputDirtyBorder: #d4af37;
+    --adminInputDirtyText: #fde68a;
+    --adminInputFocusBorder: #d4af37;
+    --adminInputFocusRing: rgba(212, 175, 55, 0.22);
+    --adminDirtyAccent: #fbbf24;
+    --adminTabBg: #151821;
+    --adminTabText: #e2e8f0;
+    --adminTabBorder: rgba(255, 255, 255, 0.14);
+    --adminTabHoverBg: #1c202b;
+    --adminTabActiveBg: #d4af37;
+    --adminTabActiveText: #0e1015;
+    --adminTabActiveHoverBg: #e2be47;
+    --adminSaveBarBg: rgba(21, 24, 33, 0.95);
+    --adminBadgeBg: rgba(255, 255, 255, 0.08);
+    --adminBadgeText: #cbd5e1;
+    --adminFlatBadgeBg: rgba(99, 102, 241, 0.18);
+    --adminFlatBadgeText: #a5b4fc;
+    --adminRateBg: rgba(59, 130, 246, 0.14);
+    --adminRateText: #93c5fd;
+    --adminRateBorder: rgba(96, 165, 250, 0.35);
+    --adminFallbackBg: rgba(225, 29, 72, 0.14);
+    --adminFallbackText: #fda4af;
+    --adminFallbackBorder: rgba(251, 113, 133, 0.35);
+    --adminSuccessBg: rgba(16, 185, 129, 0.14);
+    --adminSuccessText: #6ee7b7;
+    --adminSuccessBorder: rgba(52, 211, 153, 0.35);
+    --adminErrorText: #fb7185;
+    --adminSecondaryBtnBg: #1c202b;
+    --adminSecondaryBtnHoverBg: #262b3a;
+    --adminSecondaryBtnText: #e2e8f0;
+    --adminPrimaryBtnBg: #d4af37;
+    --adminPrimaryBtnHoverBg: #e2be47;
+    --adminPrimaryBtnText: #0e1015;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bgCanvas: #0e1015;
+  --surfaceBg: #151821;
+  --surfaceElevated: #1c202b;
+  --borderSubtle: rgba(255, 255, 255, 0.08);
+  --mainColor: #f1f3f6;
+  --mutedColor: #9aa3b2;
+  --contrastColor: #ffffff;
+  --lightColor: rgba(255, 255, 255, 0.18);
+  --mainGrad: linear-gradient(135deg, #13161e 0%, #1b1f2a 100%);
+  --contrastGrad: linear-gradient(145deg, #151821 0%, #1b1f2a 100%);
+  --darkShadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+  --lightShadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  --selectionText: #0e1015;
+  --fieldBg: var(--surfaceElevated);
+  --fieldHoverOutline: rgba(255, 255, 255, 0.35);
+  --strongColor: #ffffff;
+  --tableBg: var(--surfaceBg);
+  --tableOddBg: var(--surfaceElevated);
+  --tableHeaderBg: var(--surfaceElevated);
+  --modalOverlayBg: rgba(8, 10, 14, 0.86);
+  --modalNavBg: var(--surfaceElevated);
+  --modalFooterColor: var(--mainColor);
+  --loaderBg: rgba(14, 16, 21, 0.9);
+  --paperImgOpacity: 0.24;
+  --paperImgFilter: brightness(0.75) contrast(1.1);
+  --paperScrim: linear-gradient(90deg, rgba(14, 16, 21, 0.92) 0%, rgba(14, 16, 21, 0.72) 60%, rgba(14, 16, 21, 0.35) 100%);
+  --clientLogoFilter: grayscale(100%) invert(1) contrast(1.35);
+  --clientLogoHoverFilter: grayscale(100%) invert(1) contrast(1.35);
+  --clientLogoBlend: screen;
+  --clientLogoOpacity: 0.78;
+  --footerDividerBg: var(--borderSubtle);
+  --scrollbarThumb: rgba(255, 255, 255, 0.18);
+  --iconWellBg: var(--surfaceElevated);
+  --reviewBorder: rgba(212, 175, 55, 0.22);
+  --reviewDivider: var(--borderSubtle);
+  --serviceTextColor: var(--mutedColor);
+
+  --adminBg: #0e1015;
+  --adminText: #f1f3f6;
+  --adminMuted: #9aa3b2;
+  --adminBorder: rgba(255, 255, 255, 0.09);
+  --adminRowBorder: rgba(255, 255, 255, 0.06);
+  --adminCardBg: #151821;
+  --adminCardHeaderBg: #1b1f2a;
+  --adminTheadBg: #12151d;
+  --adminTheadText: #9aa3b2;
+  --adminRowHover: rgba(255, 255, 255, 0.03);
+  --adminTdText: #e2e8f0;
+  --adminSubText: #64748b;
+  --adminInputBg: #0e1015;
+  --adminInputDirtyBg: rgba(212, 175, 55, 0.14);
+  --adminInputBorder: rgba(255, 255, 255, 0.14);
+  --adminInputDirtyBorder: #d4af37;
+  --adminInputDirtyText: #fde68a;
+  --adminInputFocusBorder: #d4af37;
+  --adminInputFocusRing: rgba(212, 175, 55, 0.22);
+  --adminDirtyAccent: #fbbf24;
+  --adminTabBg: #151821;
+  --adminTabText: #e2e8f0;
+  --adminTabBorder: rgba(255, 255, 255, 0.14);
+  --adminTabHoverBg: #1c202b;
+  --adminTabActiveBg: #d4af37;
+  --adminTabActiveText: #0e1015;
+  --adminTabActiveHoverBg: #e2be47;
+  --adminSaveBarBg: rgba(21, 24, 33, 0.95);
+  --adminBadgeBg: rgba(255, 255, 255, 0.08);
+  --adminBadgeText: #cbd5e1;
+  --adminFlatBadgeBg: rgba(99, 102, 241, 0.18);
+  --adminFlatBadgeText: #a5b4fc;
+  --adminRateBg: rgba(59, 130, 246, 0.14);
+  --adminRateText: #93c5fd;
+  --adminRateBorder: rgba(96, 165, 250, 0.35);
+  --adminFallbackBg: rgba(225, 29, 72, 0.14);
+  --adminFallbackText: #fda4af;
+  --adminFallbackBorder: rgba(251, 113, 133, 0.35);
+  --adminSuccessBg: rgba(16, 185, 129, 0.14);
+  --adminSuccessText: #6ee7b7;
+  --adminSuccessBorder: rgba(52, 211, 153, 0.35);
+  --adminErrorText: #fb7185;
+  --adminSecondaryBtnBg: #1c202b;
+  --adminSecondaryBtnHoverBg: #262b3a;
+  --adminSecondaryBtnText: #e2e8f0;
+  --adminPrimaryBtnBg: #d4af37;
+  --adminPrimaryBtnHoverBg: #e2be47;
+  --adminPrimaryBtnText: #0e1015;
+  color-scheme: dark;
 }
 
 *::selection {
   background-color: var(--secondaryColor);
-  color: var(--contrastColor);
+  color: var(--selectionText);
 }
 
 html,
 body {
+  background-color: var(--bgCanvas);
   color: var(--mainColor);
   font-size: 1.05em;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
   padding: 0;
   margin: 0;
   font-family: 'Mulish', sans-serif;
+  transition:
+    background-color var(--transitionDuration) ease,
+    color var(--transitionDuration) ease;
 }
 
 a {
-  color: black;
+  color: var(--mainColor);
   text-decoration: none;
 }
 
@@ -57,7 +326,7 @@ section {
 }
 
 .link {
-  color: black;
+  color: var(--mainColor);
   font-weight: 600;
 }
 
@@ -72,15 +341,21 @@ section {
   display: block;
   margin: 15px 0;
   padding: 12px;
+  color: var(--mainColor);
   border: none;
   outline: 1px solid var(--lightColor);
-  background-color: inherit;
+  background-color: var(--fieldBg);
   border-radius: var(--borderRadius);
   transition-duration: var(--transitionDuration);
 }
 
+.field::placeholder {
+  color: var(--mutedColor);
+  opacity: 0.85;
+}
+
 .field:hover {
-  outline: 1px solid var(--mainColor);
+  outline: 1px solid var(--fieldHoverOutline);
 }
 
 .field:focus {

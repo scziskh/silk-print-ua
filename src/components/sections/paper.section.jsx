@@ -27,9 +27,16 @@ export default PaperSection;
 const StyledPaperSection = styled.section`
   position: relative;
   background: var(--contrastGrad);
+  border-top: 1px solid var(--borderSubtle);
+  border-bottom: 1px solid var(--borderSubtle);
   box-shadow: var(--darkShadow);
   padding: var(--gap) 0;
   overflow: hidden;
+
+  & > div:last-child {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const StyledBackground = styled.div`
@@ -39,8 +46,16 @@ const StyledBackground = styled.div`
   bottom: 0;
   left: 0;
   background-image: url('/assets/paper.webp');
-  opacity: 0.8;
+  opacity: var(--paperImgOpacity);
+  filter: var(--paperImgFilter);
   background-position: top center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--paperScrim);
+  }
 `;
 
 const StyledTextContent = styled.div`

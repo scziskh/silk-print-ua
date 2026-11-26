@@ -5,12 +5,14 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { useLocale, useTranslations } from 'next-intl';
 import Container from '@/layouts/container';
+import { ServiceFaq } from '@/components/faq';
 import { richTags } from '@/configs/richTags';
 
-export default function SilkScreenClient() {
+export default function SilkScreenClient({ pricingRows }) {
   const t = useTranslations('Services.silk-screen-printing');
   const tMeta = useTranslations('Meta.silk-screen-printing');
   const locale = useLocale();
+  const tableRows = Array.isArray(pricingRows) && pricingRows.length > 0 ? pricingRows : t.raw('pricing.rows');
 
   const galleryImages = [
     { src: '/assets/service/silk_screen_printing-1.webp' },
@@ -68,8 +70,9 @@ export default function SilkScreenClient() {
             ))}
           </ul>
         </TextContent>
-        <PricingTable title={t('pricing.title')} headers={t.raw('pricing.columns')} rows={t.raw('pricing.rows')} note={t('pricing.note')} />
+        <PricingTable title={t('pricing.title')} headers={t.raw('pricing.columns')} rows={tableRows} note={t('pricing.note')} />
         <ComparisonTable title={t('comparison.title')} headers={t.raw('comparison.headers')} rows={t.raw('comparison.rows')} />
+        <ServiceFaq namespace="Services.silk-screen-printing.faq" />
       </PageWrapper>
     </Container>
   );
@@ -159,7 +162,7 @@ const PageWrapper = styled.main`
   color: var(--mainColor);
 
   strong {
-    color: black;
+    color: var(--strongColor);
     font-weight: 600;
   }
   a {
@@ -314,7 +317,7 @@ const ComparisonStyled = styled.div`
       height: 6px;
     }
     &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: var(--scrollbarThumb);
       border-radius: 4px;
     }
   }
@@ -331,7 +334,7 @@ const ComparisonStyled = styled.div`
     display: grid;
     grid-template-columns: 2.2fr 1fr 1fr 1fr;
     width: 100%;
-    background: #fff;
+    background: var(--tableBg);
   }
 
   .b-td {
@@ -345,12 +348,13 @@ const ComparisonStyled = styled.div`
   }
 
   .b-table .data-row:nth-child(odd) {
-    background: var(--contrastGrad);
+    background: var(--tableOddBg);
   }
 
   .b-header {
     font-weight: bold;
-    background: var(--contrastGrad);
+    background: var(--tableHeaderBg);
+    border-bottom: 1px solid var(--borderSubtle);
   }
 
   /* Первая колонка (свойства) */

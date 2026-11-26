@@ -63,7 +63,8 @@ const Card = styled.div`
   background: var(--contrastGrad);
   padding: 30px;
   box-shadow: var(--darkShadow);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid var(--reviewBorder);
+  border-radius: var(--radius);
   display: flex;
   flex-direction: column;
   transition:
@@ -86,7 +87,7 @@ const Text = styled.p`
 `;
 
 const Footer = styled.div`
-  border-top: 1px solid rgba(182, 191, 192, 0.5);
+  border-top: 1px solid var(--reviewDivider);
   padding-top: 15px;
   display: flex;
   justify-content: space-between;
@@ -101,6 +102,7 @@ const Author = styled.span`
 
 const DateText = styled.span`
   font-size: 0.9rem;
+  color: var(--mutedColor);
 `;
 
 const CtaWrapper = styled.div`

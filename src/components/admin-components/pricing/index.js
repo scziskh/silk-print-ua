@@ -49,8 +49,8 @@ function makeCellKey(productSlug, operationSlug, quantity, optionKey) {
 
 const PageWrapper = styled.main`
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: var(--adminBg);
+  color: var(--adminText);
 `;
 
 const Container = styled.div`
@@ -65,7 +65,7 @@ const Header = styled.header`
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--adminBorder);
   padding-bottom: 24px;
   margin-bottom: 24px;
 `;
@@ -76,13 +76,13 @@ const Title = styled.h1`
   margin: 0;
   font-size: 24px;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--adminText);
 `;
 
 const Subtitle = styled.p`
   margin: 4px 0 0;
   font-size: 14px;
-  color: #64748b;
+  color: var(--adminMuted);
 `;
 
 const RateBadge = styled.div`
@@ -94,9 +94,9 @@ const RateBadge = styled.div`
   border-radius: 8px;
   font-size: 13px;
   font-weight: 500;
-  background-color: ${({ $isFallback }) => ($isFallback ? '#fff1f2' : '#eff6ff')};
-  color: ${({ $isFallback }) => ($isFallback ? '#9f1239' : '#1e40af')};
-  border: 1px solid ${({ $isFallback }) => ($isFallback ? '#fecdd3' : '#bfdbfe')};
+  background-color: ${({ $isFallback }) => ($isFallback ? 'var(--adminFallbackBg)' : 'var(--adminRateBg)')};
+  color: ${({ $isFallback }) => ($isFallback ? 'var(--adminFallbackText)' : 'var(--adminRateText)')};
+  border: 1px solid ${({ $isFallback }) => ($isFallback ? 'var(--adminFallbackBorder)' : 'var(--adminRateBorder)')};
 `;
 
 const TabsGroup = styled.div`
@@ -112,20 +112,20 @@ const ProductTab = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s ease;
-  background-color: ${({ $active }) => ($active ? '#0f172a' : '#ffffff')};
-  color: ${({ $active }) => ($active ? '#ffffff' : '#334155')};
-  border: 1px solid ${({ $active }) => ($active ? '#0f172a' : '#cbd5e1')};
-  box-shadow: ${({ $active }) => ($active ? '0 1px 2px rgba(15, 23, 42, 0.1)' : 'none')};
+  background-color: ${({ $active }) => ($active ? 'var(--adminTabActiveBg)' : 'var(--adminTabBg)')};
+  color: ${({ $active }) => ($active ? 'var(--adminTabActiveText)' : 'var(--adminTabText)')};
+  border: 1px solid ${({ $active }) => ($active ? 'var(--adminTabActiveBg)' : 'var(--adminTabBorder)')};
+  box-shadow: ${({ $active }) => ($active ? '0 1px 2px rgba(0, 0, 0, 0.15)' : 'none')};
 
   &:hover {
-    background-color: ${({ $active }) => ($active ? '#1e293b' : '#f1f5f9')};
+    background-color: ${({ $active }) => ($active ? 'var(--adminTabActiveHoverBg)' : 'var(--adminTabHoverBg)')};
   }
 `;
 
 const TabSlug = styled.span`
   margin-left: 6px;
   font-size: 12px;
-  opacity: 0.7;
+  opacity: 0.75;
 `;
 
 const StatusBanner = styled.div`
@@ -134,18 +134,18 @@ const StatusBanner = styled.div`
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
-  border: 1px solid ${({ $type }) => ($type === 'success' ? '#a7f3d0' : '#fecdd3')};
-  background-color: ${({ $type }) => ($type === 'success' ? '#ecfdf5' : '#fff1f2')};
-  color: ${({ $type }) => ($type === 'success' ? '#065f46' : '#9f1239')};
+  border: 1px solid ${({ $type }) => ($type === 'success' ? 'var(--adminSuccessBorder)' : 'var(--adminFallbackBorder)')};
+  background-color: ${({ $type }) => ($type === 'success' ? 'var(--adminSuccessBg)' : 'var(--adminFallbackBg)')};
+  color: ${({ $type }) => ($type === 'success' ? 'var(--adminSuccessText)' : 'var(--adminFallbackText)')};
 `;
 
 const EmptyState = styled.div`
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
+  background-color: var(--adminCardBg);
+  border: 1px solid var(--adminBorder);
   border-radius: 12px;
   padding: 32px;
   text-align: center;
-  color: #64748b;
+  color: var(--adminMuted);
   font-size: 15px;
 `;
 
@@ -160,17 +160,17 @@ const CardsGrid = styled.div`
 `;
 
 const Card = styled.section`
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
+  background-color: var(--adminCardBg);
+  border: 1px solid var(--adminBorder);
   border-radius: 12px;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   overflow: hidden;
 `;
 
 const CardHeader = styled.div`
   padding: 16px 20px;
-  background-color: #f1f5f9;
-  border-bottom: 1px solid #e2e8f0;
+  background-color: var(--adminCardHeaderBg);
+  border-bottom: 1px solid var(--adminBorder);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -181,7 +181,7 @@ const CardTitle = styled.h2`
   margin: 0;
   font-size: 16px;
   font-weight: 600;
-  color: #0f172a;
+  color: var(--adminText);
 `;
 
 const CardSlug = styled.span`
@@ -189,7 +189,7 @@ const CardSlug = styled.span`
   margin-top: 2px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 12px;
-  color: #64748b;
+  color: var(--adminMuted);
 `;
 
 const Badge = styled.span`
@@ -198,8 +198,8 @@ const Badge = styled.span`
   font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
-  background-color: ${({ $variant }) => ($variant === 'flat' ? '#eef2ff' : '#e2e8f0')};
-  color: ${({ $variant }) => ($variant === 'flat' ? '#4338ca' : '#334155')};
+  background-color: ${({ $variant }) => ($variant === 'flat' ? 'var(--adminFlatBadgeBg)' : 'var(--adminBadgeBg)')};
+  color: ${({ $variant }) => ($variant === 'flat' ? 'var(--adminFlatBadgeText)' : 'var(--adminBadgeText)')};
 `;
 
 const TableWrapper = styled.div`
@@ -215,9 +215,9 @@ const Table = styled.table`
 `;
 
 const Thead = styled.thead`
-  background-color: #f8fafc;
-  color: #475569;
-  border-bottom: 1px solid #e2e8f0;
+  background-color: var(--adminTheadBg);
+  color: var(--adminTheadText);
+  border-bottom: 1px solid var(--adminBorder);
 `;
 
 const Th = styled.th`
@@ -231,25 +231,25 @@ const ThSub = styled.div`
   font-size: 11px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-weight: 400;
-  color: #94a3b8;
+  color: var(--adminSubText);
   margin-top: 2px;
 `;
 
 const Tr = styled.tr`
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--adminRowBorder);
 
   &:last-child {
     border-bottom: none;
   }
 
   &:hover {
-    background-color: #f8fafc;
+    background-color: var(--adminRowHover);
   }
 `;
 
 const Td = styled.td`
   padding: 8px 16px;
-  color: #1e293b;
+  color: var(--adminTdText);
   font-weight: ${({ $bold }) => ($bold ? 600 : 400)};
   white-space: ${({ $nowrap }) => ($nowrap ? 'nowrap' : 'normal')};
   vertical-align: top;
@@ -258,7 +258,7 @@ const Td = styled.td`
 const MonoTd = styled(Td)`
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 12px;
-  color: #64748b;
+  color: var(--adminMuted);
   vertical-align: middle;
 `;
 
@@ -267,9 +267,9 @@ const PriceInput = styled.input`
   min-width: 90px;
   padding: 6px 10px;
   border-radius: 6px;
-  border: 1px solid ${({ $dirty }) => ($dirty ? '#fbbf24' : '#cbd5e1')};
-  background-color: ${({ $dirty }) => ($dirty ? '#fffbeb' : '#ffffff')};
-  color: ${({ $dirty }) => ($dirty ? '#78350f' : '#0f172a')};
+  border: 1px solid ${({ $dirty }) => ($dirty ? 'var(--adminInputDirtyBorder)' : 'var(--adminInputBorder)')};
+  background-color: ${({ $dirty }) => ($dirty ? 'var(--adminInputDirtyBg)' : 'var(--adminInputBg)')};
+  color: ${({ $dirty }) => ($dirty ? 'var(--adminInputDirtyText)' : 'var(--adminText)')};
   font-weight: ${({ $dirty }) => ($dirty ? 600 : 400)};
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 14px;
@@ -280,8 +280,8 @@ const PriceInput = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #0f172a;
-    box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.15);
+    border-color: var(--adminInputFocusBorder);
+    box-shadow: 0 0 0 2px var(--adminInputFocusRing);
   }
 `;
 
@@ -290,7 +290,7 @@ const EurHint = styled.div`
   text-align: right;
   font-size: 11px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  color: ${({ $dirty }) => ($dirty ? '#b45309' : '#94a3b8')};
+  color: ${({ $dirty }) => ($dirty ? 'var(--adminDirtyAccent)' : 'var(--adminSubText)')};
 `;
 
 const FloatingSaveBar = styled.div`
@@ -298,10 +298,10 @@ const FloatingSaveBar = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.96);
+  background-color: var(--adminSaveBarBg);
   backdrop-filter: blur(8px);
-  border-top: 1px solid #e2e8f0;
-  box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.06);
+  border-top: 1px solid var(--adminBorder);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.18);
   z-index: 50;
 `;
 
@@ -319,14 +319,14 @@ const SaveBarInner = styled.div`
 const DirtyCounter = styled.span`
   font-size: 14px;
   font-weight: 600;
-  color: #b45309;
+  color: var(--adminDirtyAccent);
 `;
 
 const ValidationError = styled.span`
   margin-left: 12px;
   font-size: 14px;
   font-weight: 500;
-  color: #e11d48;
+  color: var(--adminErrorText);
 `;
 
 const ActionsGroup = styled.div`
@@ -338,15 +338,15 @@ const ActionsGroup = styled.div`
 const SecondaryButton = styled.button`
   padding: 8px 16px;
   border-radius: 8px;
-  border: none;
-  background-color: #f1f5f9;
-  color: #334155;
+  border: 1px solid var(--adminTabBorder);
+  background-color: var(--adminSecondaryBtnBg);
+  color: var(--adminSecondaryBtnText);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
 
   &:hover:not(:disabled) {
-    background-color: #e2e8f0;
+    background-color: var(--adminSecondaryBtnHoverBg);
   }
 
   &:disabled {
@@ -359,14 +359,14 @@ const PrimaryButton = styled.button`
   padding: 8px 20px;
   border-radius: 8px;
   border: none;
-  background-color: #0f172a;
-  color: #ffffff;
+  background-color: var(--adminPrimaryBtnBg);
+  color: var(--adminPrimaryBtnText);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
 
   &:hover:not(:disabled) {
-    background-color: #1e293b;
+    background-color: var(--adminPrimaryBtnHoverBg);
   }
 
   &:disabled {

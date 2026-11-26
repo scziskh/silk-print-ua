@@ -62,10 +62,12 @@ const StyledNavbar = styled.nav`
   }
 
   input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
     opacity: 0;
-    @media screen and (max-width: 1024px) {
-      visibility: visible;
-    }
+    pointer-events: none;
 
     &:checked ~ label > span {
       transform: rotate(45deg);
@@ -89,12 +91,11 @@ const StyledNavbar = styled.nav`
 
 const StyledBurgerLabel = styled.label`
   display: none;
-  position: absolute;
-  right: 0;
+  position: relative;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   padding: 10px;
   cursor: pointer;
   z-index: 99;

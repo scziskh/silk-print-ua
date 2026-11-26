@@ -49,6 +49,8 @@ const MARQUEE_GAP = '200px';
 const Section = styled.section`
   padding: 20px 0 68px;
   background: var(--contrastGrad);
+  border-top: 1px solid var(--borderSubtle);
+  border-bottom: 1px solid var(--borderSubtle);
   overflow: hidden;
   box-shadow: var(--darkShadow);
 `;
@@ -104,15 +106,20 @@ const LogoCard = styled.div`
     height: 100%;
     width: auto;
     object-fit: contain;
-    filter: grayscale(100%);
-    transition: filter var(--transitionDuration) ease;
+    filter: var(--clientLogoFilter);
+    mix-blend-mode: var(--clientLogoBlend);
+    opacity: var(--clientLogoOpacity);
+    transition:
+      filter var(--transitionDuration) ease,
+      opacity var(--transitionDuration) ease;
   }
 
   &:hover {
     transform: scale(1.05);
 
     img {
-      filter: grayscale(0);
+      filter: var(--clientLogoHoverFilter);
+      opacity: 1;
     }
   }
 `;
